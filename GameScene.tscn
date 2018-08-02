@@ -1,0 +1,233 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://GameScene.gd" type="Script" id=1]
+[ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Ramp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Goal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player.gd" type="Script" id=8]
+[ext_resource path="res://Area.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Area.gd" type="Script" id=10]
+
+[sub_resource type="BoxShape" id=1]
+
+extents = Vector3( 1, 1, 1 )
+
+[node name="World" type="Spatial" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08603e+016, 1.50481e+017, -7.86176e+016 )
+script = ExtResource( 1 )
+
+[node name="Floor" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="Floor2" parent="." index="1" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 38 )
+
+[node name="Floor3" parent="." index="2" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.5, 38 )
+
+[node name="Floor4" parent="." index="3" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5, 8.5, 38 )
+
+[node name="Floor5" parent="." index="4" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 2.5, 38 )
+
+[node name="Floor6" parent="." index="5" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 5.5, 18 )
+
+[node name="Wall" parent="." index="6" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 0 )
+
+[node name="Wall2" parent="." index="7" instance=ExtResource( 3 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0 )
+
+[node name="Wall3" parent="." index="8" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 1, 9.5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall4" parent="." index="9" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 1, -9.5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall5" parent="." index="10" instance=ExtResource( 3 )]
+
+transform = Transform( -4.37114e-008, 0, 1, 0, 1, 0, -1, 0, -4.37114e-008, 0, 1, 29 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Wall6" parent="." index="11" instance=ExtResource( 3 )]
+
+transform = Transform( 0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, 0.996195, 0, 1, 19 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ramp" parent="." index="12" instance=ExtResource( 4 )]
+
+transform = Transform( -1.52521e-007, 1.84732e-008, -0.3, 1.62708, 0.906308, 0, -3.48928, 0.422618, 1.31134e-008, -2, 5.87753, -18 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Ramp2" parent="." index="13" instance=ExtResource( 4 )]
+
+transform = Transform( -3.48928, 0.422618, 2.62268e-008, 1.62708, 0.906308, 0, 3.05042e-007, -3.69464e-008, 0.3, -18, 4.5, 59 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="End Platform" parent="." index="14" instance=ExtResource( 2 )]
+
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4, -49.5 )
+
+[node name="Ball" parent="End Platform" index="1" instance=ExtResource( 5 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.5, 0.5 )
+mass = 30.0
+linear_damp = 0.5
+angular_damp = 0.5
+_sections_unfolded = [ "Angular", "Linear" ]
+
+[node name="Goal" parent="End Platform" index="2" instance=ExtResource( 6 )]
+
+transform = Transform( -1, 0, 8.74228e-008, 0, 1, 0, -8.74228e-008, 0, -1, 8.5, 6.5, 3.5 )
+
+[node name="Area" type="Area" parent="End Platform" index="3"]
+
+transform = Transform( 0.724862, 0, 0, 0, 8.01931, 0, 0, 0, 3.69935, 10, 3.5, 0.5 )
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 1
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+
+[node name="CollisionShape" type="CollisionShape" parent="End Platform/Area" index="0"]
+
+shape = SubResource( 1 )
+disabled = false
+
+[node name="Player" parent="." index="15" instance=ExtResource( 7 )]
+
+transform = Transform( 0.642788, 0.766044, 0, 3.34849e-008, -2.80971e-008, -1, -0.766044, 0.642788, -4.37114e-008, 36, 8, 10 )
+script = ExtResource( 8 )
+
+[node name="Camera" type="Camera" parent="Player" index="2"]
+
+transform = Transform( 0.627889, 0.774059, 0.081166, 0.766806, -0.597383, -0.234823, -0.13328, 0.209682, -0.968643, 1.30749, -10.8877, -46.5 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = false
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 200.0
+
+[node name="Box" parent="." index="16" instance=ExtResource( 9 )]
+
+transform = Transform( 0.853553, -0.146447, -0.5, 0.5, 0.5, 0.707107, 0.146447, -0.853553, 0.5, 7, 2.5, -2.5 )
+script = ExtResource( 10 )
+
+[node name="Box2" parent="." index="17" instance=ExtResource( 9 )]
+
+transform = Transform( 0.853553, -0.146447, -0.5, 0.5, 0.5, 0.707107, 0.146447, -0.853553, 0.5, -41, 11, 37.5 )
+script = ExtResource( 10 )
+
+[node name="Panel" type="Panel" parent="." index="18"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 391.0
+margin_top = 261.0
+margin_right = 588.0
+margin_bottom = 346.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="Panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 39.0
+margin_right = 126.0
+margin_bottom = 53.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "You Win!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="19"]
+
+transform = Transform( 0.990286, -0.0128923, -0.13845, 0.0998596, 0.758817, 0.643603, 0.0967604, -0.651176, 0.752733, 0, 28.5, 0 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 0.8
+light_indirect_energy = 1.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.1
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+directional_shadow_mode = 2
+directional_shadow_split_1 = 0.1
+directional_shadow_split_2 = 0.2
+directional_shadow_split_3 = 0.5
+directional_shadow_blend_splits = false
+directional_shadow_normal_bias = 0.8
+directional_shadow_bias_split_scale = 0.25
+directional_shadow_depth_range = 0
+directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light" ]
+
+[connection signal="body_entered" from="End Platform/Area" to="." method="_on_Area_body_entered"]
+
+[connection signal="body_entered" from="Box" to="Box" method="_on_Box_body_entered"]
+
+[connection signal="body_entered" from="Box2" to="Box2" method="_on_Box_body_entered"]
+
+
